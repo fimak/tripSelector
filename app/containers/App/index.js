@@ -11,10 +11,9 @@ import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable';
+import TestPage from 'containers/TestPage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Header from 'components/Header';
 import Footer from 'components/Footer';
 
 const AppWrapper = styled.div`
@@ -30,14 +29,13 @@ export default function App() {
   return (
     <AppWrapper>
       <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
+        titleTemplate="%s - React.js"
+        defaultTitle="React.js"
       >
-        <meta name="description" content="A React.js Boilerplate application" />
+        <meta name="description" content="A Trip Sorter Application" />
       </Helmet>
-      <Header />
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <Route exact path="/" component={TestPage} />
         <Route path="/features" component={FeaturePage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
