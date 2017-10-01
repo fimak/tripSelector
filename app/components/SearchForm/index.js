@@ -10,7 +10,7 @@ export default class SearchForm extends React.PureComponent { // eslint-disable-
     return (
       <Grid>
         <Row>
-          <Col md={3} mdOffset={2}>
+          <Col md={3} mdOffset={2} xs={6} xsOffset={3}>
             <h2 className={style.title}>TripSorter</h2>
             <Form horizontal onSubmit={this.props.onSubmitForm} className={style.root}>
               <FormGroup>
@@ -25,7 +25,7 @@ export default class SearchForm extends React.PureComponent { // eslint-disable-
                   <Button href="#">Fastest</Button>
                 </ButtonGroup>
               </FormGroup>
-              <FormGroup justified>
+              <FormGroup>
                 <Button bsStyle="success" block>Search</Button>
               </FormGroup>
             </Form>

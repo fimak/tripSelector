@@ -1,0 +1,33 @@
+.item {
+  background: #d3d3d3;
+  margin: 10px 0;
+  padding: 5px;
+}
+
+.lastItem {
+  composes: item;
+  background: #808080;
+}
+
+.cost {
+  padding: 0 10px;
+  text-decoration: line-through;
+}
+
+.amount {
+  font-weight: bold;
+  float: right;
+}
+
+.slimFont {
+  font-size: 10px;
+  font-style: italic;
+}
+
+.reference {
+  padding: 0 10px;
+}
+
+.total {
+  padding-right: 10px;
+}
