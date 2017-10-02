@@ -1,36 +1,21 @@
-import axios from 'axios'
 import * as types from './constants'
 
-export function tripsFetchRequest() {
-  return {
-    type: types.TRIPS_FETCH_REQUEST
-  }
-}
-
-export function tripsFetchSuccess(data) {
+export function tripsFetch() {
   return {
     type: types.TRIPS_FETCH,
-    data
   }
 }
 
-export function tripsFetchFailure() {
+export function tripsFetchSuccess(trips) {
   return {
-    type: types.TRIPS_FETCH_FAILURE
+    type: types.TRIPS_FETCH_SUCCESS,
+    trips
   }
 }
 
-export function tripsFetch() {
-  return (dispatch) => {
-    dispatch(tripsFetchRequest())
-
-    return axios.post('localhost:3003/trips')
-      .then((response) => response.data)
-      /* eslint-disable arrow-body-style */
-      .then((data) => {
-        return dispatch(tripsFetchSuccess(data))
-      })
-      /* eslint-enable */
-      .catch((error) => dispatch(tripsFetchFailure(error)))
+export function tripsFetchError(error) {
+  return {
+    type: types.TRIPS_FETCH_ERROR,
+    error
   }
 }
