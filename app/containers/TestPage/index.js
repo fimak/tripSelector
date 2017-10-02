@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { createStructuredSelector } from 'reselect'
+import _ from 'lodash'
 
 import SearchForm from '../../components/SearchForm'
 import SearchResults from '../../components/SearchResults'
@@ -31,8 +32,22 @@ export class TestPage extends React.PureComponent { // eslint-disable-line react
     loadTrips: PropTypes.func,
   }
 
+  state = {
+    cities: []
+  }
+
   componentDidMount() {
     this.props.loadTrips()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.trips !== this.props.trips && _.has(nextProps.trips, 'deals')) {
+      const cities = _.union(
+        _.map(nextProps.trips.deals, (el) => el.departure),
+        _.map(nextProps.trips.deals, (el) => el.departure)
+      ).sort()
+      this.setState({ cities })
+    }
   }
 
   render() {
@@ -42,7 +57,7 @@ export class TestPage extends React.PureComponent { // eslint-disable-line react
           <title>TripSorter</title>
           <meta name="description" content="Trip sorter"/>
         </Helmet>
-        <SearchForm/>
+        <SearchForm cities={this.state.cities}/>
         <SearchResults/>
       </article>
     )

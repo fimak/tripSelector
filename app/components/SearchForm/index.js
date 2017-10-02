@@ -7,6 +7,11 @@ import style from './style.css'
 
 export default class SearchForm extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
+    const options = _.map(this.props.cities, (el) => {
+      return {value: el, label: el}
+    })
+
+    console.log(this.props.cities)
     return (
       <Grid>
         <Row>
@@ -14,10 +19,10 @@ export default class SearchForm extends React.PureComponent { // eslint-disable-
             <h2 className={style.title}>TripSorter</h2>
             <Form horizontal onSubmit={this.props.onSubmitForm} className={style.root}>
               <FormGroup>
-                <Select name="from"/>
+                <Select name="from" options={options}/>
               </FormGroup>
               <FormGroup>
-                <Select name="to"/>
+                <Select name="to" options={options}/>
               </FormGroup>
               <FormGroup>
                 <ButtonGroup justified>

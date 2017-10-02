@@ -29,7 +29,6 @@ export default class SearchResults extends React.PureComponent { // eslint-disab
     const amountTime = '12h30'
     const amount = '1200'
 
-
     return (
       <Grid>
         <Row>
